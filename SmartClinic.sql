@@ -32,3 +32,21 @@ CREATE TABLE Person (
         UNIQUE (Email)
 );
 
+
+-- 3. CREATE THE PATIENT SUBCLASS
+
+CREATE TABLE Patient (
+    PatientID INT,
+    DateOfBirth DATE NOT NULL,
+    Gender ENUM('Male', 'Female') NOT NULL,
+
+    CONSTRAINT PK_Patient
+        PRIMARY KEY (PatientID),
+
+    CONSTRAINT FK_Patient_Person
+        FOREIGN KEY (PatientID)
+        REFERENCES Person(PersonID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
