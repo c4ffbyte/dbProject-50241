@@ -50,3 +50,22 @@ CREATE TABLE Patient (
         ON DELETE CASCADE
 );
 
+-- 4. CREATE THE DOCTOR SUBCLASS
+
+CREATE TABLE Doctor (
+    DoctorID INT,
+    Specialization VARCHAR(100) NOT NULL,
+    LicenseNumber VARCHAR(50) NOT NULL,
+
+    CONSTRAINT PK_Doctor
+        PRIMARY KEY (DoctorID),
+
+    CONSTRAINT UQ_Doctor_License
+        UNIQUE (LicenseNumber),
+
+    CONSTRAINT FK_Doctor_Person
+        FOREIGN KEY (DoctorID)
+        REFERENCES Person(PersonID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
