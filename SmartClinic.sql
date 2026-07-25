@@ -69,3 +69,40 @@ CREATE TABLE Doctor (
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
+
+
+
+-- 5. CREATE THE APPOINTMENT TABLE
+
+CREATE TABLE Appointment (
+    AppointmentID INT AUTO_INCREMENT,
+    PatientID INT NOT NULL,
+    DoctorID INT NOT NULL,
+    AppointmentDate DATE NOT NULL,
+    AppointmentTime TIME NOT NULL,
+    Reason VARCHAR(255) NOT NULL,
+    Status ENUM(
+        'Scheduled',
+        'Completed',
+        'Cancelled',
+        'No Show'
+    ) NOT NULL DEFAULT 'Scheduled',
+
+    CONSTRAINT PK_Appointment
+        PRIMARY KEY (AppointmentID),
+
+    CONSTRAINT FK_Appointment_Patient
+        FOREIGN KEY (PatientID)
+        REFERENCES Patient(PatientID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CONSTRAINT FK_Appointment_Doctor
+        FOREIGN KEY (DoctorID)
+        REFERENCES Doctor(DoctorID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CONSTRAINT UQ_Doctor_Schedule
+        UNIQUE (DoctorID, AppointmentDate, AppointmentTime)
+);
