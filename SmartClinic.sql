@@ -129,3 +129,28 @@ CREATE TABLE Treatment (
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
+
+
+-- 7. CREATE THE MEDICINE TABLE
+
+CREATE TABLE Medicine (
+    MedicineID INT AUTO_INCREMENT,
+    TreatmentID INT NOT NULL,
+    MedicineName VARCHAR(100) NOT NULL,
+    Dosage VARCHAR(100) NOT NULL,
+    Frequency VARCHAR(100) NOT NULL,
+    DurationDays INT NOT NULL,
+    Instructions VARCHAR(255),
+
+    CONSTRAINT PK_Medicine
+        PRIMARY KEY (MedicineID),
+
+    CONSTRAINT FK_Medicine_Treatment
+        FOREIGN KEY (TreatmentID)
+        REFERENCES Treatment(TreatmentID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CONSTRAINT CHK_Medicine_Duration
+        CHECK (DurationDays > 0)
+);
