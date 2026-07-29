@@ -195,3 +195,49 @@ CREATE TABLE Payment (
     CONSTRAINT CHK_Payment_Amount
         CHECK (Amount >= 0)
 );
+
+
+-- insert person records
+
+INSERT INTO Person
+    (PersonID, FirstName, LastName, Phone, Email, Address, PersonType)
+VALUES
+    (1, 'Fahad', 'Alqahtani', '+966501234501',
+     'fahad.alqahtani@example.sa',
+     'Al Malaz District, Riyadh', 'Patient'),
+
+    (2, 'Noura', 'Alharbi', '+966501234502',
+     'noura.alharbi@example.sa',
+     'Al Rawdah District, Jeddah', 'Patient'),
+
+    (3, 'Khalid', 'Aldosari', '+966501234503',
+     'khalid.aldosari@example.sa',
+     'Al Faisaliyah District, Dammam', 'Patient'),
+
+    (4, 'Reem', 'Alotaibi', '+966501234504',
+     'reem.alotaibi@example.sa',
+     'Al Aziziyah District, Makkah', 'Patient'),
+
+    (5, 'Abdullah', 'Alshammari', '+966501234505',
+     'abdullah.alshammari@example.sa',
+     'Al Naqrah District, Hail', 'Patient'),
+
+    (6, 'Ahmed', 'Alzahrani', '+966551234601',
+     'ahmed.alzahrani@smartclinic.sa',
+     'Al Olaya District, Riyadh', 'Doctor'),
+
+    (7, 'Sara', 'Alghamdi', '+966551234602',
+     'sara.alghamdi@smartclinic.sa',
+     'Al Zahra District, Jeddah', 'Doctor'),
+
+    (8, 'Mohammed', 'Almutairi', '+966551234603',
+     'mohammed.almutairi@smartclinic.sa',
+     'Al Rakah District, Al Khobar', 'Doctor'),
+
+    (9, 'Lama', 'Alsubaie', '+966551234604',
+     'lama.alsubaie@smartclinic.sa',
+     'Al Yasmin District, Riyadh', 'Doctor'),
+
+    (10, 'Omar', 'Alenezi', '+966551234605',
+     'omar.alenezi@smartclinic.sa',
+     'Al Safa District, Jeddah', 'Doctor');
