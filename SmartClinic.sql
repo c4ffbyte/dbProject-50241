@@ -154,3 +154,44 @@ CREATE TABLE Medicine (
     CONSTRAINT CHK_Medicine_Duration
         CHECK (DurationDays > 0)
 );
+
+-- 8. CREATE THE PAYMENT TABLE
+
+CREATE TABLE Payment (
+    PaymentID INT AUTO_INCREMENT,
+    AppointmentID INT NOT NULL,
+    Amount DECIMAL(10,2) NOT NULL,
+    PaymentDate DATE,
+    PaymentMethod ENUM(
+        'Cash',
+        'Mada',
+        'Credit Card',
+        'Bank Transfer',
+        'Insurance'
+    ),
+    PaymentStatus ENUM(
+        'Pending',
+        'Paid',
+        'Partially Paid',
+        'Refunded'
+    ) NOT NULL DEFAULT 'Pending',
+    TransactionReference VARCHAR(100),
+
+    CONSTRAINT PK_Payment
+        PRIMARY KEY (PaymentID),
+
+    CONSTRAINT UQ_Payment_Appointment
+        UNIQUE (AppointmentID),
+
+    CONSTRAINT UQ_Payment_Reference
+        UNIQUE (TransactionReference),
+
+    CONSTRAINT FK_Payment_Appointment
+        FOREIGN KEY (AppointmentID)
+        REFERENCES Appointment(AppointmentID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CONSTRAINT CHK_Payment_Amount
+        CHECK (Amount >= 0)
+);
