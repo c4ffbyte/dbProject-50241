@@ -106,3 +106,26 @@ CREATE TABLE Appointment (
     CONSTRAINT UQ_Doctor_Schedule
         UNIQUE (DoctorID, AppointmentDate, AppointmentTime)
 );
+
+-- 6. CREATE THE TREATMENT TABLE
+
+CREATE TABLE Treatment (
+    TreatmentID INT AUTO_INCREMENT,
+    AppointmentID INT NOT NULL,
+    Diagnosis VARCHAR(255) NOT NULL,
+    TreatmentDescription TEXT NOT NULL,
+    TreatmentDate DATE NOT NULL,
+    Notes TEXT,
+
+    CONSTRAINT PK_Treatment
+        PRIMARY KEY (TreatmentID),
+
+    CONSTRAINT UQ_Treatment_Appointment
+        UNIQUE (AppointmentID),
+
+    CONSTRAINT FK_Treatment_Appointment
+        FOREIGN KEY (AppointmentID)
+        REFERENCES Appointment(AppointmentID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
