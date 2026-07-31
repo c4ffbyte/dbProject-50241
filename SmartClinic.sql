@@ -241,3 +241,30 @@ VALUES
     (10, 'Omar', 'Alenezi', '+966551234605',
      'omar.alenezi@smartclinic.sa',
      'Al Safa District, Jeddah', 'Doctor');
+
+
+
+-- INSERT FIVE PATIENT RECORDS
+
+INSERT INTO Patient
+    (PatientID, DateOfBirth, Gender)
+VALUES
+    (1, '1990-03-15', 'Male'),
+    (2, '1995-07-22', 'Female'),
+    (3, '1983-11-08', 'Male'),
+    (4, '2001-01-30', 'Female'),
+    (5, '1978-09-12', 'Male');
+
+
+
+-- INSERT FIVE DOCTOR RECORDS
+
+
+INSERT INTO Doctor
+    (DoctorID, Specialization, LicenseNumber)
+VALUES
+    (6, 'General Medicine', 'SCFHS-GM-24001'),
+    (7, 'Dermatology', 'SCFHS-DER-24002'),
+    (8, 'Cardiology', 'SCFHS-CAR-24003'),
+    (9, 'Pediatrics', 'SCFHS-PED-24004'),
+    (10, 'Orthopedics', 'SCFHS-ORT-24005');
