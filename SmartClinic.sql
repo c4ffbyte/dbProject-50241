@@ -291,3 +291,38 @@ VALUES
     (5, 5, 10, '2026-07-18', '15:30:00',
      'Pain in the right knee', 'Completed');
 
+-- insert five treatment records
+
+INSERT INTO Treatment
+    (TreatmentID, AppointmentID, Diagnosis,
+     TreatmentDescription, TreatmentDate, Notes)
+VALUES
+    (1, 1,
+     'Acute throat infection',
+     'The patient was advised to rest, increase fluid intake, and follow the prescribed medication.',
+     '2026-07-15',
+     'Review after five days if symptoms continue.'),
+
+    (2, 2,
+     'Allergic dermatitis',
+     'A topical treatment was prescribed, and the patient was advised to avoid possible skin irritants.',
+     '2026-07-15',
+     'Return if the rash spreads or becomes painful.'),
+
+    (3, 3,
+     'Hypertension',
+     'Blood pressure medication was prescribed with dietary and lifestyle recommendations.',
+     '2026-07-16',
+     'Monitor blood pressure daily for two weeks.'),
+
+    (4, 4,
+     'Mild respiratory infection',
+     'The patient received medication to reduce coughing and improve breathing.',
+     '2026-07-17',
+     'Avoid dust and strong perfumes during recovery.'),
+
+    (5, 5,
+     'Knee joint inflammation',
+     'Pain relief medication and reduced physical activity were recommended.',
+     '2026-07-18',
+     'Follow-up appointment recommended after one week.');
