@@ -268,3 +268,26 @@ VALUES
     (8, 'Cardiology', 'SCFHS-CAR-24003'),
     (9, 'Pediatrics', 'SCFHS-PED-24004'),
     (10, 'Orthopedics', 'SCFHS-ORT-24005');
+
+
+-- insert five appointment records
+
+INSERT INTO Appointment
+    (AppointmentID, PatientID, DoctorID, AppointmentDate,
+     AppointmentTime, Reason, Status)
+VALUES
+    (1, 1, 6, '2026-07-15', '09:00:00',
+     'Fever and sore throat', 'Completed'),
+
+    (2, 2, 7, '2026-07-15', '10:30:00',
+     'Skin irritation and itching', 'Completed'),
+
+    (3, 3, 8, '2026-07-16', '11:00:00',
+     'Chest discomfort and high blood pressure', 'Completed'),
+
+    (4, 4, 9, '2026-07-17', '13:00:00',
+     'Seasonal cough and breathing difficulty', 'Completed'),
+
+    (5, 5, 10, '2026-07-18', '15:30:00',
+     'Pain in the right knee', 'Completed');
+
