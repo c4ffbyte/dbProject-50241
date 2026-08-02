@@ -375,3 +375,14 @@ VALUES
 
     (5, 5, 450.00, '2026-07-18',
      'Bank Transfer', 'Paid', 'BANK-HIL-20260718-005');
+
+
+-- DISPLAY THE INSERTED DATA
+
+SELECT * FROM Person;
+SELECT * FROM Patient;
+SELECT * FROM Doctor;
+SELECT * FROM Appointment;
+SELECT * FROM Treatment;
+SELECT * FROM Medicine;
+SELECT * FROM Payment;
