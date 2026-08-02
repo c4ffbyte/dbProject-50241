@@ -326,3 +326,52 @@ VALUES
      'Pain relief medication and reduced physical activity were recommended.',
      '2026-07-18',
      'Follow-up appointment recommended after one week.');
+
+
+-- INSERT FIVE MEDICINE RECORDS
+
+INSERT INTO Medicine
+    (MedicineID, TreatmentID, MedicineName, Dosage,
+     Frequency, DurationDays, Instructions)
+VALUES
+    (1, 1, 'Amoxicillin', '500 mg',
+     'Three times daily', 5,
+     'Take after meals and complete the full course.'),
+
+    (2, 2, 'Hydrocortisone Cream', '1%',
+     'Twice daily', 7,
+     'Apply a thin layer to the affected area.'),
+
+    (3, 3, 'Amlodipine', '5 mg',
+     'Once daily', 30,
+     'Take at the same time every day.'),
+
+    (4, 4, 'Salbutamol Inhaler', '100 mcg',
+     'When required', 10,
+     'Use according to the doctor’s instructions.'),
+
+    (5, 5, 'Ibuprofen', '400 mg',
+     'Twice daily', 5,
+     'Take after meals and do not exceed the prescribed dose.');
+
+
+-- INSERT FIVE PAYMENT RECORDS
+
+INSERT INTO Payment
+    (PaymentID, AppointmentID, Amount, PaymentDate,
+     PaymentMethod, PaymentStatus, TransactionReference)
+VALUES
+    (1, 1, 250.00, '2026-07-15',
+     'Mada', 'Paid', 'MADA-RYD-20260715-001'),
+
+    (2, 2, 350.00, '2026-07-15',
+     'Credit Card', 'Paid', 'CC-JED-20260715-002'),
+
+    (3, 3, 500.00, '2026-07-16',
+     'Insurance', 'Paid', 'INS-DMM-20260716-003'),
+
+    (4, 4, 300.00, '2026-07-17',
+     'Cash', 'Paid', 'CASH-MKH-20260717-004'),
+
+    (5, 5, 450.00, '2026-07-18',
+     'Bank Transfer', 'Paid', 'BANK-HIL-20260718-005');
