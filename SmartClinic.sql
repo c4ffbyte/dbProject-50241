@@ -452,3 +452,32 @@ GROUP BY
     p.LastName,
     d.Specialization
 ORDER BY TotalAppointments DESC;
+
+CREATE OR REPLACE VIEW CompletedAppointmentDetails AS
+SELECT
+    a.AppointmentID,
+    CONCAT(pp.FirstName, ' ', pp.LastName) AS PatientName,
+    CONCAT(pd.FirstName, ' ', pd.LastName) AS DoctorName,
+    d.Specialization,
+    a.AppointmentDate,
+    a.AppointmentTime,
+    a.Reason,
+    t.Diagnosis,
+    t.TreatmentDescription,
+    pay.Amount,
+    pay.PaymentMethod,
+    pay.PaymentStatus
+FROM Appointment AS a
+INNER JOIN Patient AS p
+    ON a.PatientID = p.PatientID
+INNER JOIN Person AS pp
+    ON p.PatientID = pp.PersonID
+INNER JOIN Doctor AS d
+    ON a.DoctorID = d.DoctorID
+INNER JOIN Person AS pd
+    ON d.DoctorID = pd.PersonID
+LEFT JOIN Treatment AS t
+    ON a.AppointmentID = t.AppointmentID
+LEFT JOIN Payment AS pay
+    ON a.AppointmentID = pay.AppointmentID
+WHERE a.Status = 'Completed';
