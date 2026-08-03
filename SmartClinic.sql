@@ -386,3 +386,38 @@ SELECT * FROM Appointment;
 SELECT * FROM Treatment;
 SELECT * FROM Medicine;
 SELECT * FROM Payment;
+
+-- Task 4
+
+SELECT
+    AppointmentID,
+    PatientID,
+    DoctorID,
+    AppointmentDate,
+    AppointmentTime,
+    Reason,
+    Status
+FROM Appointment
+WHERE Status = 'Completed'
+ORDER BY AppointmentDate, AppointmentTime;
+
+
+SELECT
+    a.AppointmentID,
+    CONCAT(pp.FirstName, ' ', pp.LastName) AS PatientName,
+    CONCAT(pd.FirstName, ' ', pd.LastName) AS DoctorName,
+    d.Specialization,
+    a.AppointmentDate,
+    a.AppointmentTime,
+    a.Reason,
+    a.Status
+FROM Appointment AS a
+INNER JOIN Patient AS p
+    ON a.PatientID = p.PatientID
+INNER JOIN Person AS pp
+    ON p.PatientID = pp.PersonID
+INNER JOIN Doctor AS d
+    ON a.DoctorID = d.DoctorID
+INNER JOIN Person AS pd
+    ON d.DoctorID = pd.PersonID
+ORDER BY a.AppointmentDate, a.AppointmentTime;
