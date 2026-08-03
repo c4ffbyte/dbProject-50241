@@ -485,3 +485,30 @@ WHERE a.Status = 'Completed';
 
 SELECT *
 FROM CompletedAppointmentDetails;
+
+
+DELIMITER $$
+
+CREATE TRIGGER BeforeTreatmentInsert
+BEFORE INSERT ON Treatment
+FOR EACH ROW
+BEGIN
+    DECLARE CurrentAppointmentStatus VARCHAR(20);
+
+    SELECT Status
+    INTO CurrentAppointmentStatus
+    FROM Appointment
+    WHERE AppointmentID = NEW.AppointmentID;
+
+    IF CurrentAppointmentStatus IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'The specified appointment does not exist.';
+
+    ELSEIF CurrentAppointmentStatus <> 'Completed' THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT =
+            'A treatment can only be added to a completed appointment.';
+    END IF;
+END$$
+
+DELIMITER ;
