@@ -481,3 +481,7 @@ LEFT JOIN Treatment AS t
 LEFT JOIN Payment AS pay
     ON a.AppointmentID = pay.AppointmentID
 WHERE a.Status = 'Completed';
+
+
+SELECT *
+FROM CompletedAppointmentDetails;
