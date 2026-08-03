@@ -421,3 +421,34 @@ INNER JOIN Doctor AS d
 INNER JOIN Person AS pd
     ON d.DoctorID = pd.PersonID
 ORDER BY a.AppointmentDate, a.AppointmentTime;
+
+
+SELECT
+    PaymentID,
+    AppointmentID,
+    Amount,
+    PaymentMethod,
+    PaymentStatus
+FROM Payment
+WHERE Amount > (
+    SELECT AVG(Amount)
+    FROM Payment
+)
+ORDER BY Amount DESC;
+
+SELECT
+    d.DoctorID,
+    CONCAT(p.FirstName, ' ', p.LastName) AS DoctorName,
+    d.Specialization,
+    COUNT(a.AppointmentID) AS TotalAppointments
+FROM Doctor AS d
+INNER JOIN Person AS p
+    ON d.DoctorID = p.PersonID
+LEFT JOIN Appointment AS a
+    ON d.DoctorID = a.DoctorID
+GROUP BY
+    d.DoctorID,
+    p.FirstName,
+    p.LastName,
+    d.Specialization
+ORDER BY TotalAppointments DESC;
